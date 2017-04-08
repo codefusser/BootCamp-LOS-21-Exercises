@@ -3,27 +3,36 @@
 module.exports = {
 
  /* Find the average of three integers */
- computeAverage: function(num1, num2, num3) {
-   var average;
-   return average;
- },
- 
- /* Find the factorial of an integer */
- computeFactorial: function(num) {
-   var factorial;
-   return factorial;
- },
+	aritGeo : function(){
+  		if (arguments.length === 0){
+    		return 0;
+  		}
 
- /* Convert a given Celcius temperature to Fahrenheit */
- convertTempCtoF: function(cTemp) {
-   var fTemp;
-   return fTemp;
- },
+  		if (arguments.length <= 2){
+    		return -1;
+  		}
+    
+    	if (arguments.length >= 3){    		
+    		let firstNumber = Number(arguments[0]);
+  			let commonDiff = Number(arguments[1]) - Number(arguments[0]);
+  			let commonRatio = Number(arguments[1]) / Number(arguments[0]);  			
+  			let argLength = Number(arguments.length); 
+  			
 
- /* Convert a given Fahrenheit temperature to Celcius */
- convertTempFtoC: function(fTemp) {
-   var cTemp;
-   return cTemp;
- }
-
+  			let d = 0;
+  			let nthTerm = 2; 
+  
+    	for (let i=2; i < argLength; i++){
+    		nthTerm += 1;
+    		if (Number(arguments[i]) === Number(firstNumber) + (nthTerm - 1) * commonDiff) {
+    	  		return "Arithmetic";
+    		}
+    		if (Number(arguments[i]) === firstNumber * Math.pow(commonRatio, nthTerm-1)) {
+      			return "Geometric";
+    		}
+    	}
+	    
+  	}
+	  return -1;
+	}
 }
