@@ -1,36 +1,37 @@
 // testing code goes here
 
 'use strict'
+//import JasmineExpect from 'jasmine-expect';
 
-var chai = require('chai');
-var assert = chai.assert;
+//var chai = require('chai');
+var Jasmine = require('../lib/jasmine.js');
+//var assert = chai.assert;
+//var expect = require('/jasmine-expect/src/toBeArray.js');
+var expect = Jasmine.expect;
 
 var myApp = require('../app/library.js');
 
-describe("Arithmetic Functionality", function() {
-  it("should return 2 as average for 1, 2, 3", function() {
-    assert(myApp.computeAverage(1,2,3) == 2);
+describe("Generate Prime Numbers", function() {
+  it("given a value of 22 expect [2, 3, 5, 7, 11, 13, 17, 19]", function() {
+    expect(myApp.genPrimes(22).toBeArray([2, 3, 5, 7, 11, 13, 17, 19]));
   })
-  it("should return 5 as average for 3, 7, 5", function() {
-    assert(myApp.computeAverage(3, 7, 5) == 5);
+  it("given a value of 13 expect [2, 3, 5, 7, 11]", function() {
+    expect(myApp.genPrimes(13).toBeArray([2, 3, 5, 7, 11]));
   })
-  it("should return 120 as factorial for 5", function() {
-    assert(myApp.computeFactorial(5) == 120);
+  it("given a value of 13 expect [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]", function() {
+    expect(myApp.genPrimes(35).toBeArray([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]));
+  })
+  it("given a value of 40 expect [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]", function() {
+    expect(myApp.genPrimes(40).toBeArray([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]));
+  })
+  it("given a value of 60 expect [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59]", function() {
+    expect(myApp.genPrimes(60).toBeArray([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59]));
+  })
+  it("given a value of 60 expect [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79]", function() {
+    expect(myApp.genPrimes(80).toBeArray([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79]));
+  })
+  it("given a value of 13 expect [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103]", function() {
+    expect(myApp.genPrimes(104).toBeArray([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103]));
   })
 })
 
-
-describe("Temperature Conversion Functionality", function() {
-  it("should return X for Celcius value Y", function() {
-    assert(myApp.convertTempCtoF(40) == 104);
-  })
-  it("should return X for Celcius value Y", function() {
-    assert(myApp.convertTempCtoF(60) == 140);
-  })
-  it("should return Y for Fahrenheit value X", function() {
-    assert(myApp.convertTempFtoC(140) == 60);
-  })
-  it("should return Y for Fahrenheit value X", function() {
-    assert(myApp.convertTempFtoC(104) == 40);
-  })
-})
