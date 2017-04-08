@@ -3,27 +3,37 @@
 module.exports = {
 
  /* Find the average of three integers */
- computeAverage: function(num1, num2, num3) {
-   var average;
-   return average;
- },
- 
- /* Find the factorial of an integer */
- computeFactorial: function(num) {
-   var factorial;
-   return factorial;
- },
+ {
 
- /* Convert a given Celcius temperature to Fahrenheit */
- convertTempCtoF: function(cTemp) {
-   var fTemp;
-   return fTemp;
- },
+ /* Find the average of three integers */
+ isPrimes : function(num){
+	if (typeof num === 'number'){
+		var isPrime = false;	
+			if (num  <= 1){
+				return isPrime;
+			}
+	
+			for (var i = 2; i < num; i++) {			
+				if (num % i === 0 ) {			
+					return !isPrime;		
+			}
+		}
+		return isPrime;	
+	}		
+},
 
- /* Convert a given Fahrenheit temperature to Celcius */
- convertTempFtoC: function(fTemp) {
-   var cTemp;
-   return cTemp;
- }
+getPrimes : function(num){
+	if (typeof num === 'number'){
+		var primeList = [];
+		for (var i = 2; i < num; i++) {
+			if (!this.isPrimes(i)) {
+				primeList.push(i);
+			}
+		}
+		return primeList;
+	}else
+		return [];		
+	}  
+}
 
 }
