@@ -1,69 +1,36 @@
 // testing code goes here
 
-(function(){ 
-    'use strict'
-    var chai = require('chai');
-    //var assert = chai.assert;
-    var expect = chai.expect;
-    var myApp = require('../app/library.js');
+'use strict'
 
-  describe("Determine the sequence of an array of numbers: ", function() {
+var chai = require('chai');
+var assert = chai.assert;
 
-    describe("Case for an empty array", function() {
+var myApp = require('../app/library.js');
 
-      it("should return 0 for an empty array", function() {
-        expect(myApp.aritGeo()).to.equal(0);
-      });
+describe("Arithmetic Functionality", function() {
+  it("should return 2 as average for 1, 2, 3", function() {
+    assert(myApp.computeAverage(1,2,3) == 2);
+  })
+  it("should return 5 as average for 3, 7, 5", function() {
+    assert(myApp.computeAverage(3, 7, 5) == 5);
+  })
+  it("should return 120 as factorial for 5", function() {
+    assert(myApp.computeFactorial(5) == 120);
+  })
+})
 
-    });
 
-    describe("Case for an arithmetic sequence", function() {
-
-      it("should return `Arithmetic` for [2, 4, 6, 8, 10]", function() {
-        expect(myApp.aritGeo(2, 4, 6, 8, 10)).to.equal('Arithmetic');
-      });
-
-      it("should return `Arithmetic` for [5, 11, 17, 23, 29, 35, 41]", function() {
-        expect(myApp.aritGeo(5, 11, 17, 23, 29, 35, 41)).to.equal('Arithmetic');
-      });
-
-      it("should return `Arithmetic` for [15, 10, 5, 0, -5, -10]", function() {
-        expect(myApp.aritGeo(15, 10, 5, 0, -5, -10)).to.equal('Arithmetic');
-      });
-
-    });
-
-    describe("Case for a geometric sequence", function() {
-
-      it("should return `Geometric` for [2, 6, 18, 54, 162]", function() {
-        expect(myApp.aritGeo(2, 6, 18, 54, 162)).to.equal('Geometric');
-      });
-
-      it("should return `Geometric` for [0.5, 3.5, 24.5, 171.5]", function() {
-        expect(myApp.aritGeo(0.5, 3.5, 24.5, 171.5)).to.equal('Geometric');
-      });
-
-      it("should return `Geometric` for [−128, 64, −32, 16, −8]", function() {
-        expect(myApp.aritGeo(-128, 64, -32, 16, -8)).to.equal('Geometric');
-      });
-
-    });
-
-    describe("Case for neither arithmetic nor geometric sequence", function() {
-
-      it("should return -1 for [1, 2, 3, 5, 8]", function() {
-        expect(myApp.aritGeo([1, 2, 3, 5, 8])).to.equal(-1);
-      });
-
-      it("should return -1 for [1, 3, 6, 10, 15]", function() {
-        expect(myApp.aritGeo(1, 3, 6, 10, 15)).to.equal(-1);
-      });
-
-      it("should return -1 for [1, 8, 27, 64, 125]", function() {
-        expect(myApp.aritGeo(1, 8, 27, 64, 125)).to.equal(-1);
-      });
-      
-    });
-  });
-})();
-
+describe("Temperature Conversion Functionality", function() {
+  it("should return X for Celcius value Y", function() {
+    assert(myApp.convertTempCtoF(40) == 104);
+  })
+  it("should return X for Celcius value Y", function() {
+    assert(myApp.convertTempCtoF(60) == 140);
+  })
+  it("should return Y for Fahrenheit value X", function() {
+    assert(myApp.convertTempFtoC(140) == 60);
+  })
+  it("should return Y for Fahrenheit value X", function() {
+    assert(myApp.convertTempFtoC(104) == 40);
+  })
+})
