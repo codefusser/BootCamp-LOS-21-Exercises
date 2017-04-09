@@ -4,13 +4,13 @@
 
 //First define an empty function
 
-let employerDetails = function() { };
+let EmployerDetails = function() { };
 
 //use the prototype keyword to set properties of the function object
 
 //employerDetail property 1
 
-employerDetails.prototype.empDetail = {
+EmployerDetails.prototype.empDetail = {
   empName : "XYZ Inc",
   departments : ["Admin", "Accounting", "Recruitment", "Engineering", "Sales", "Marketing", "Information Technology"],
   empAddress : "123, stroll road, surrey"
@@ -18,19 +18,20 @@ employerDetails.prototype.empDetail = {
 };
 
 //employerDetail property 2
-employerDetails.prototype.getEmployerInfo = function() {
+EmployerDetails.prototype.getEmployerInfo = function() {
 	let empInfo = [];
 	empInfo = [this.empDetail.empName, this.empDetail.departments, this.empDetail.empAddress];
 	return empInfo;
 }
 
 //definition of a subclass
-let employee = function() {
+let Employee = function() {
 	this.employeeName = "member1";
 
-	//this is encapsulation, using closure
+	//this is encapsulation (data hiding), using closure, only 'em' method knows what is happening and could change the name of the employee
 	let em = function () {
-		this.employeeName = "new member1";
+		this.employeeName = 'newMember';
+		return this.employeeName;
 	}
   
   this.employeeInfo = function() {
@@ -39,14 +40,14 @@ let employee = function() {
 };
 
 //extending the properties of a superclass object (employerDetails) to subclass object (employee)
-employee.prototype = new employerDetails();
+Employee.prototype = new EmployerDetails();
 
 ///mind you, this is only unidirectional, if you want the super class to be able to access the sub class you must declare its prototype as an object
-//employerDetails.prototype = new employee();
+//EmployerDetails.prototype = new Employee();
 
 //create new instances of the objects
-let emp2 = new employee();
-let emp = new employerDetails();
+let emp2 = new Employee();
+let emp = new EmployerDetails();
 
 
 //access the properties using the different objects
