@@ -5,11 +5,11 @@ let http = require('http');
 let key = require('./modules/auth.js');
 //import 'auths' from './modules/auth.js';
 //let keying = auths();
-let keying = key;
+let _key = key;
 
 let location = 'Lagos';
 //Use the GET method to send a request to the API which will pass the response to the callback
-const request = http.get('http://api.apixu.com/v1/current.json?key=14ba7ce001404b30a78153347171404&q='+location, function(response){
+const request = http.get('http://api.apixu.com/v1/current.json?key='+_key+'&q='+location, function(response){
 	let weatherData = "";
 	//console.log(response.statusCode);
 
